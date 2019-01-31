@@ -10,8 +10,6 @@ object ChatHistory {
     }
 
     override fun toString(): String {
-        var historySize = history.size
-        var indexToPrint = 0
         for (index in history) {
             println(index)
         }

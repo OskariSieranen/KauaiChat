@@ -1,10 +1,12 @@
+import java.io.BufferedOutputStream
 import java.io.InputStream
+import java.io.OutputStream
 import java.io.PrintStream
 import java.util.Scanner
-
-class CommandInterpreter(inputStream: InputStream, printStream: PrintStream) {
-    val sc = Scanner(System.`in`)
-
+class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream) {
+   // val sc = Scanner(System.`in`)
+    val sc = Scanner(inputStream)
+    val pr = PrintStream(outputStream)
     fun run() {
         do {
             print(">")
@@ -23,13 +25,15 @@ class CommandInterpreter(inputStream: InputStream, printStream: PrintStream) {
                 input.startsWith(":") -> when (input.substringAfter(":")) {
                     "quit" -> quitting = true
                     "help" -> println("Print HELP")
+                    "history" -> ChatHistory.toString()
                 }
                 else ->  if(Users.userList.isEmpty()) {
-                            println("Set username before posting :v)")
-                         } else {
-                               println(ChatMessage(input, "asdf").toString())
+                    println("Set username before posting :v)")
+                } else {
+                    println(ChatMessage(input, "asdf").toString())
+                    ChatHistory.insert(ChatMessage(input, "asdf"))
+                }
 
-                         }
             }
         } while (!quitting)
     }
