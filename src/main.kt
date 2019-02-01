@@ -6,7 +6,6 @@ fun main(args : Array<String>) {
     val ss = ServerSocket(0)
     println("Port: $ss")
     val s = ss.accept()
-    //val ci = CommandInterpreter(System.`in`, System.out)
     val ci = CommandInterpreter(s.getInputStream(), s.getOutputStream())
     ci.run()
 }
