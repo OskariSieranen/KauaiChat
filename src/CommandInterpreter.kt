@@ -2,13 +2,12 @@ import java.io.BufferedOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 import java.io.PrintStream
-import java.util.Scanner
+import java.util.*
 import kotlin.test.currentStackTrace
-// TODO newMessage(message:ChatMessage)
-class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): Runnable {
+class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): Runnable, ChatObserver {
+
     val sc = Scanner(inputStream)
     val pr = PrintStream(outputStream)
-
     override fun run() {
         do {
             pr.print(">")
@@ -40,5 +39,9 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
 
             }
         } while (!quitting)
+    }
+
+    override fun newMessage(message: ChatMessage) {
+        //Prints out the message from chathistory
     }
 }

@@ -1,14 +1,8 @@
-//TODO registerObserver(observer:ChatHistoryObserver) deregisterObserver(observer:ChatHistoryObserver) notifyObservers (message:ChatMessage)
 interface ChatObservable {
-    fun registerObserver() {
 
-    }
+    fun registerObserver(observer: ChatObserver) {}
 
-    fun deregisterObserver() {
+    fun deregisterObserver(observer: ChatObserver) {}
 
-    }
-
-    fun notifyObserver() {
-
-    }
+    fun notifyObserver(message: ChatMessage) {}
 }

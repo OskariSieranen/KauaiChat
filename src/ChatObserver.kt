@@ -1,5 +1,4 @@
 interface ChatObserver {
-    fun update() {
-        
-    }
+
+    fun newMessage(message: ChatMessage) {}
 }
