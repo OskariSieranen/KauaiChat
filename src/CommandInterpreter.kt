@@ -19,14 +19,14 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream) {
                 //input == "" -> pr.println("You have to input something :v)")
                 // (input.substringAfter(":user"))
                 input.startsWith(":user") -> when  {
-                    //TODO vvvv~~~~~ fix userList print
-                    userWhitespace -> pr.println(Users.listUsers())
+                    userWhitespace -> pr.println(Users.toString())
                     else -> Users.addUser(input.substringAfter(":user"))
                 }
                 input.startsWith(":") -> when (input.substringAfter(":")) {
                     "quit" -> quitting = true
                     "help" -> pr.println("Print HELP")
-                    "history" -> ChatHistory.toString()
+                    //TODO History prints to console
+                    "history" -> pr.println(ChatHistory.toString())
                 }
                 else ->  if(Users.userList.isEmpty()) {
                     pr.println("Set username before posting :v)")
