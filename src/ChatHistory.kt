@@ -1,14 +1,14 @@
 import java.lang.StringBuilder
-import java.util.ArrayList
-
+//TODO registerObserver(observer:ChatHistoryObserver) deregisterObserver(observer:ChatHistoryObserver) notifyObservers (message:ChatMessage)
 object ChatHistory {
     val sb = StringBuilder()
     val history = mutableListOf<ChatMessage>()
 
     fun insert(message: ChatMessage) {
         history.add(message)
-        var historySize = history.size
-        if (historySize > 10) history.dropLast(1)
+        if (history.size > 10) {
+            history.removeAt(0)
+        }
     }
 
     override fun toString(): String {
@@ -19,10 +19,4 @@ object ChatHistory {
         println(toprint)
         return toprint
     }
-/*    override fun toString(): String {
-        for (index in history) {
-            println(index)
-        }
-        return "Ok"
-    }*/
 }
