@@ -1,5 +1,4 @@
 import java.lang.StringBuilder
-//TODO registerObserver(observer:ChatHistoryObserver) deregisterObserver(observer:ChatHistoryObserver) notifyObservers (message:ChatMessage)
 object ChatHistory {
     val sb = StringBuilder()
     val history = mutableListOf<ChatMessage>()

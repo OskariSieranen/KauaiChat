@@ -1,0 +1,5 @@
+interface ChatObserver {
+    fun update() {
+        
+    }
+}
