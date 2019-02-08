@@ -9,32 +9,46 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
     val sc = Scanner(inputStream)
     val pr = PrintStream(outputStream)
     override fun run() {
+        var currentName = ""
+        ChatHistory.registerObserver(this)
         do {
+
             pr.print(">")
             var input: String = sc.nextLine()
             var quitting = false
-            var currentName = ""
             var whitespace = input.isBlank()
             var userWhitespace = input.substringAfter(":user").isBlank()
 
             when {
                 whitespace -> pr.println("You have to input something :v)")
                 input.startsWith(":user") -> when  {
-                    userWhitespace -> pr.println(Users.toString())
-                    else -> {
+                    //userWhitespace -> pr.println(Users.toString())
+                    !userWhitespace -> {
+                        currentName = input.substringAfter(":user")
                         Users.addUser(input.substringAfter(":user"))
+                        println(input.substringAfter(":user"))
                     }
+                    else -> pr.println(Users.toString())
+                    /*else -> {
+                        Users.addUser(input.substringAfter(":user"))
+                        currentName = input.substringAfter(":user")
+                        println(input.substringAfter(":user"))
+                    }*/
                 }
                 input.startsWith(":") -> when (input.substringAfter(":")) {
-                    "quit" -> quitting = true
+                    "quit" -> {
+                        quitting = true
+                        ChatHistory.deregisterObserver(this)
+                    }
                     "help" -> pr.println("Print HELP")
                     "history" -> pr.println(ChatHistory.toString())
                 }
-                else ->  if(Users.userList.isEmpty()) {
+                else ->  if(currentName == "") {
                     pr.println("Set username before posting :v)")
                 } else {
-                    pr.println(ChatMessage(input, currentName).toString())
+                    //pr.println(ChatMessage(input, currentName).toString())
                     ChatHistory.insert(ChatMessage(input, currentName))
+                    ChatHistory.notifyObserver(ChatMessage(input, currentName))
                 }
 
             }
@@ -42,6 +56,6 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
     }
 
     override fun newMessage(message: ChatMessage) {
-        //Prints out the message from chathistory
+        pr.println(message)
     }
 }

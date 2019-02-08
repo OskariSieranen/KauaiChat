@@ -34,6 +34,8 @@ object ChatHistory: ChatObservable {
     }
 
     override fun notifyObserver(message: ChatMessage) {
-    //TODO Loop through all observers -> New message
+        for (i in observers) {
+            i.newMessage(message)
+        }
     }
 }
