@@ -12,7 +12,6 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
         var currentName = ""
         ChatHistory.registerObserver(this)
         do {
-
             pr.print(">")
             var input: String = sc.nextLine()
             var quitting = false
@@ -24,9 +23,14 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
                 input.startsWith(":user") -> when  {
                     //userWhitespace -> pr.println(Users.toString())
                     !userWhitespace -> {
-                        currentName = input.substringAfter(":user")
-                        Users.addUser(input.substringAfter(":user"))
-                        println(input.substringAfter(":user"))
+                        var fixedInput = input.substringAfter(":user").replace("\\s".toRegex(), "")
+                        if (Users.userList.contains(fixedInput)) {
+                            pr.println("Please input a unique username. :v)")
+                        } else {
+                            currentName = fixedInput
+                            Users.addUser(fixedInput)
+                            println(fixedInput)
+                        }
                     }
                     else -> pr.println(Users.toString())
                     /*else -> {
@@ -40,13 +44,12 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
                         quitting = true
                         ChatHistory.deregisterObserver(this)
                     }
-                    "help" -> pr.println("Print HELP")
+                    "help" -> pr.println("Available commands: \n * :user - Add new user or list all users\n * :history - List last 10 messages\n * :help Display this message\n * :quit - Exit the chat")
                     "history" -> pr.println(ChatHistory.toString())
                 }
                 else ->  if(currentName == "") {
                     pr.println("Set username before posting :v)")
                 } else {
-                    //pr.println(ChatMessage(input, currentName).toString())
                     ChatHistory.insert(ChatMessage(input, currentName))
                     ChatHistory.notifyObserver(ChatMessage(input, currentName))
                 }
