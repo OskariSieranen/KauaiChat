@@ -1,6 +1,7 @@
 import java.io.InputStream
 import java.io.OutputStream
 import java.io.PrintStream
+import java.time.LocalDateTime
 import java.util.*
 class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): Runnable, ChatObserver {
 
@@ -11,6 +12,7 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
         var currentName = ""
         ChatHistory.registerObserver(this)
         ChatConsole()
+        //val leaderboard = TopChatter()
         do {
             pr.print(">")
             var input: String = sc.nextLine()
@@ -60,14 +62,15 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
                         quitting = true
                         ChatHistory.deregisterObserver(this)
                     }
-                    "help" -> pr.println("Available commands: \n * :user - Add new user or list all users\n * :history - List last 10 messages\n * :help Display this message\n * :quit - Exit the chat")
+                    "help" -> pr.println("Available commands: \n * :user - Add new user or list all users\n * :history - List last 10 messages\n * :online - Lists user's number of messages\n * :help - Display this message\n * :quit - Exit the chat")
                     "history" -> pr.println(ChatHistory.toString())
+                    "online" -> pr.println(TopChatter.toString())
                 }
                 else ->  if(currentName == "") {
                     pr.println("Set username before posting :v)")
                 } else {
-                    ChatHistory.insert(ChatMessage(input, currentName))
-                    ChatHistory.notifyObserver(ChatMessage(input, currentName))
+                    ChatHistory.insert(ChatMessage(input, currentName, LocalDateTime.now()))
+                    ChatHistory.notifyObserver(ChatMessage(input, currentName, LocalDateTime.now()))
                 }
 
             }

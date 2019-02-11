@@ -11,6 +11,7 @@ object ChatHistory: ChatObservable {
     }
 
     override fun toString(): String {
+        // replace with $var calls
         var toprint = ""
         for (index in history) {
             toprint = sb.append(index).append("\n").toString()
