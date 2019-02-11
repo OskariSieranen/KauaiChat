@@ -11,7 +11,6 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
     override fun run() {
         var currentName = ""
         ChatHistory.registerObserver(this)
-        //val leaderboard = TopChatter()
         TopChatter.toString()
         do {
             pr.print(">")
@@ -23,7 +22,6 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
             when {
                 whitespace -> pr.println("You have to input something :v)")
                 input.startsWith(":user") -> when  {
-                    //userWhitespace -> pr.println(Users.toString())
                     !userWhitespace -> {
                         var fixedInput = input.substringAfter(":user").replace("\\s".toRegex(), "")
                         if (Users.userList.contains(fixedInput)) {
@@ -35,11 +33,6 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
                         }
                     }
                     else -> pr.println(Users.toString())
-                    /*else -> {
-                        Users.addUser(input.substringAfter(":user"))
-                        currentName = input.substringAfter(":user")
-                        println(input.substringAfter(":user"))
-                    }*/
                 }
                 input.startsWith(":removeuser") -> {
                     var toRemove = input.substringAfter(":removeuser").replace("\\s".toRegex(), "")
@@ -58,7 +51,6 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
                 }
                 input.startsWith(":") -> when (input.substringAfter(":")) {
                     "quit" -> {
-                        // TODO close and try/catch scanner scanner
                         quitting = true
                         ChatHistory.deregisterObserver(this)
                     }
