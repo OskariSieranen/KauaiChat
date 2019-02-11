@@ -1,16 +1,16 @@
-import java.io.BufferedOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 import java.io.PrintStream
 import java.util.*
-import kotlin.test.currentStackTrace
 class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): Runnable, ChatObserver {
 
     val sc = Scanner(inputStream)
     val pr = PrintStream(outputStream)
+
     override fun run() {
         var currentName = ""
         ChatHistory.registerObserver(this)
+        ChatConsole()
         do {
             pr.print(">")
             var input: String = sc.nextLine()
@@ -39,8 +39,24 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
                         println(input.substringAfter(":user"))
                     }*/
                 }
+                input.startsWith(":removeuser") -> {
+                    var toRemove = input.substringAfter(":removeuser").replace("\\s".toRegex(), "")
+                    when (toRemove) {
+                        "" -> pr.println("Please give an username to remove! :v)")
+                        else -> {
+                            if (Users.userList.contains(toRemove)) {
+                                if (toRemove == currentName) currentName = ""
+                                Users.removeUser(toRemove)
+                                pr.println("User $(toRemove) removed!")
+                            } else {
+                                pr.println("No such user exists! :v)")
+                            }
+                        }
+                    }
+                }
                 input.startsWith(":") -> when (input.substringAfter(":")) {
                     "quit" -> {
+                        // TODO close and try/catch scanner scanner
                         quitting = true
                         ChatHistory.deregisterObserver(this)
                     }

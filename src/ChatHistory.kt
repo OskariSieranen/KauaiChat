@@ -1,5 +1,4 @@
 import java.lang.StringBuilder
-import java.util.*
 
 object ChatHistory: ChatObservable {
     val sb = StringBuilder()
@@ -8,9 +7,7 @@ object ChatHistory: ChatObservable {
 
     fun insert(message: ChatMessage) {
         history.add(message)
-        if (history.size > 10) {
-            history.removeAt(0)
-        }
+        if (history.size > 10) history.removeAt(0)
     }
 
     override fun toString(): String {
@@ -34,6 +31,7 @@ object ChatHistory: ChatObservable {
     }
 
     override fun notifyObserver(message: ChatMessage) {
+        //TODO foreach this
         for (i in observers) {
             i.newMessage(message)
         }
