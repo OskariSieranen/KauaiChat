@@ -11,8 +11,8 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
     override fun run() {
         var currentName = ""
         ChatHistory.registerObserver(this)
-        ChatConsole()
         //val leaderboard = TopChatter()
+        TopChatter.toString()
         do {
             pr.print(">")
             var input: String = sc.nextLine()

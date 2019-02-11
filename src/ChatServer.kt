@@ -4,6 +4,7 @@ class ChatServer() {
     fun serve() {
         val ss = ServerSocket(0)
         println("Port: $ss")
+        ChatConsole()
         while (true) {
             try {
                 val s = ss.accept()

@@ -1,4 +1,4 @@
-class ChatConsole(): ChatObserver{
+class ChatConsole: ChatObserver{
     init {
         ChatHistory.registerObserver(this)
     }
