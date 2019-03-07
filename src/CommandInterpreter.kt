@@ -13,7 +13,6 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
         ChatHistory.registerObserver(this)
         TopChatter.toString()
         do {
-            pr.print(">")
             var input: String = sc.nextLine()
             var quitting = false
             var whitespace = input.isBlank()

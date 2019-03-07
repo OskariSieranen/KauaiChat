@@ -2,7 +2,7 @@ import java.net.ServerSocket
 
 class ChatServer() {
     fun serve() {
-        val ss = ServerSocket(0)
+        val ss = ServerSocket(55555)
         println("Port: $ss")
         ChatConsole()
         while (true) {
@@ -14,7 +14,7 @@ class ChatServer() {
                 println("Got exception: $(e.message)")
             } finally {
                 println("Done.")
-            }
+           }
         }
     }
 }
