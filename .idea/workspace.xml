@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="77377232-a317-4655-9891-7f951bc4f003" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KauaiChat/ChatHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KauaiChat/ChatHistory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KauaiChat/ChatMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KauaiChat/ChatMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KauaiChat/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KauaiChat/ChatServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/KauaiChat/CommandInterpreter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KauaiChat/CommandInterpreter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KauaiChat/TopChatter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KauaiChat/TopChatter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CommandInterpreter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommandInterpreter.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +18,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ChatServer.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CommandInterpreter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="58" column="61" selection-start-line="58" selection-start-column="61" selection-end-line="58" selection-end-column="61" />
+              <folding>
+                <element signature="e#0#131#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,19 +71,19 @@
         <option value="$PROJECT_DIR$/src/ChatObservable.kt" />
         <option value="$PROJECT_DIR$/src/Users.kt" />
         <option value="$PROJECT_DIR$/src/ChatConsole.kt" />
-        <option value="$PROJECT_DIR$/src/CommandInterpreter.kt" />
         <option value="$PROJECT_DIR$/src/ChatHistory.kt" />
         <option value="$PROJECT_DIR$/src/ChatMessage.kt" />
         <option value="$PROJECT_DIR$/src/TopChatter.kt" />
         <option value="$USER_HOME$/Downloads/RecyclerViewExample/app/src/main/java/com/example/recyclerviewexample/MainActivity.kt" />
         <option value="$PROJECT_DIR$/src/ChatServer.kt" />
+        <option value="$PROJECT_DIR$/src/CommandInterpreter.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="4" />
     <option name="y" value="25" />
-    <option name="width" value="716" />
+    <option name="width" value="1432" />
     <option name="height" value="871" />
   </component>
   <component name="ProjectView">
@@ -84,7 +92,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -101,6 +108,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -167,8 +175,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="25" width="1432" height="871" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49807444" visible="true" weight="0.044604316" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49807444" visible="true" weight="0.16258992" />
       <window_info id="Structure" order="1" sideWeight="0.5019255" side_tool="true" weight="0.2545045" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -231,16 +240,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ChatServer.java" />
-    <entry file="file://$PROJECT_DIR$/src/CommandInterpreter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="e#0#131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ChatConsole.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -311,6 +310,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CommandInterpreter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="58" column="61" selection-start-line="58" selection-start-column="61" selection-end-line="58" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#131#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

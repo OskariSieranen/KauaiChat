@@ -53,9 +53,10 @@ class CommandInterpreter(inputStream: InputStream, outputStream: OutputStream): 
                         quitting = true
                         ChatHistory.deregisterObserver(this)
                     }
-                    "help" -> pr.println("Available commands: \n * :user - Add new user or list all users\n * :history - List last 10 messages\n * :online - Lists user's number of messages\n * :help - Display this message\n * :quit - Exit the chat")
+                    "help" -> pr.println("Available commands: \n\r * :user - Add new user or list all users\n\r * :history - List last 10 messages\n\r * :online - Lists user's number of messages\n\r * :help - Display this message\n\r * :quit - Exit the chat")
                     "history" -> pr.println(ChatHistory.toString())
                     "online" -> pr.println(TopChatter.toString())
+                    else -> pr.println("Unrecognised command ")
                 }
                 else ->  if(currentName == "") {
                     pr.println("Set username before posting :v)")
